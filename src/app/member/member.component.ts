@@ -1,5 +1,15 @@
+/*
+File: member.component.ts
+Author: Katona Valentin
+Copyright: 2022, Katona Valentin
+Group: Szoft II/N
+Date: 2022-03-31
+Github: https://github.com/djvalee
+Licenc: GNU GPL
+*/
+
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-member',
@@ -8,6 +18,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class MemberComponent implements OnInit {
 
+  MemberForm ! : FormGroup;
+
   memberForm = new FormGroup( {
     name: new FormControl(''),
     city: new FormControl(''),
@@ -15,9 +27,15 @@ export class MemberComponent implements OnInit {
     email: new FormControl('')
   })
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.MemberForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      city: ['', Validators.required],
+      address: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    })
   }
 
   saveMember() {

@@ -1,3 +1,12 @@
+<!--
+File: member.component.html
+Author: Katona Valentin
+Copyright: 2022, Katona Valentin
+Group: Szoft II/N
+Date: 2022-03-31
+Github: https://github.com/djvalee
+Licenc: GNU GPL
+-->
 
 <form [formGroup]="memberForm" (ngSubmit)="saveMember()">
 
@@ -5,28 +14,36 @@
         <label for="name" class="form-label">Név</label>
         <input type="text" class="form-control" id="name" 
         formControlName="name"
-        placeholder="Vezetéknév Keresztnév">
+        placeholder="Vezetéknév Keresztnév" required>
+        <span *ngIf="memberForm.controls['name'].errors?.['required']">
+            A mező kitöltése kötelező.</span>
     </div>
 
     <div class="mb-3">
         <label for="city" class="form-label">Város</label>
         <input type="text" class="form-control" id="city" 
         formControlName="city"
-        placeholder="Település neve">
+        placeholder="Település neve" required>
+        <span *ngIf="memberForm.controls['city'].errors?.['required']">
+            A mező kitöltése kötelező.</span>
     </div>
 
     <div class="mb-3">
         <label for="address" class="form-label">Város</label>
         <input type="text" class="form-control" id="address" 
         formControlName="address"
-        placeholder="Cím">
+        placeholder="Cím" required>
+        <span *ngIf="memberForm.controls['address'].errors?.['required']">
+            A mező kitöltése kötelező.</span>
     </div>
 
     <div class="mb-3">
         <label for="email" class="form-label">E-mail</label>
         <input type="text" class="form-control" id="email" 
         formControlName="email"
-        placeholder="E-mail cím">
+        placeholder="E-mail cím" required>
+        <span *ngIf="memberForm.controls['email'].errors?.['required']">
+            A mező kitöltése kötelező.</span>
     </div>
 
     <div>
