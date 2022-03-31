@@ -24,7 +24,7 @@ export class MemberComponent implements OnInit {
     name: new FormControl(''),
     city: new FormControl(''),
     address: new FormControl(''),
-    email: new FormControl('')
+    email: new FormControl('', [Validators.required, Validators.email])
   })
 
   constructor(private formBuilder: FormBuilder) { }
